@@ -11,8 +11,8 @@
 #define STATUS_LENGTH 9
 #define LENGTH 10
 
-int  encoder_cnt=0;                     //エンコーダカウント用変数
-int  encoder_rotate_cnt=0;              //エンコーダ回転数カウント用変数
+volatile int encoder_cnt = 0;                     //エンコーダカウント用変数
+volatile int encoder_rotate_cnt = 0;              //エンコーダ回転数カウント用変数
 
 
 double duration = 0;
@@ -95,7 +95,7 @@ void _display(byte bin1, byte bin2) {
     new_digitalWrite(RCLK, HIGH);
 }
 
-byte n1, n2;
+volatile byte n1, n2;
 void display(uint8_t lv) {
   if (lv < 100) {
     n1 = digits[lv % 10];
@@ -122,7 +122,7 @@ void display(uint8_t lv) {
   _display(n1, n2);
 }
 
-uint16_t x = 0;
+volatile uint16_t x = 0;
 void _up() {
   x = 499 <= x ? 499 : x + 1;
 }
