@@ -14,12 +14,6 @@
 volatile int encoder_cnt = 0;                     //エンコーダカウント用変数
 volatile int encoder_rotate_cnt = 0;              //エンコーダ回転数カウント用変数
 
-
-double duration = 0;
-double distance = 0;
-double speed_of_sound = 331.5 + 0.6 * 25;
-uint8_t lv = 0;
-
 byte status[STATUS_LENGTH] = {
   0b11111111,
   0b01111111,
@@ -151,5 +145,5 @@ void loop() {
   Serial.print(", ");
   Serial.println(encoder_cnt);       //エンコーダカウントをPCに出力
   display(x / 5);
-  delay(10);
+  //delay(5);
 }
